@@ -26,11 +26,18 @@ For deliverable #4, I will be using the sample code from Visual Studio Code Lab 
 1. Open Terminal, ensure MySQL is running using your host user & password by running the code below. Enter "BetterWorldBooksDB" to connect to the database.
    
 ```python
-connection = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="your_password",
-    database="BetterWorldBooksDB")
+#Connect to the MySQL server
+import mysql.connector
+
+try:
+    connection = mysql.connector.connect(
+        host="localhost",
+        user="youruser",
+        password="yourpassword",
+        database="BetterWorldBooksDB")
+
+    if connection.is_connected():
+        print("Connected to the MySQL database successfully")
 ```
 
 2. Once connected to MySQL database, open the Python file by running the following code:
