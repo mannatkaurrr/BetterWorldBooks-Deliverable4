@@ -17,9 +17,10 @@ For deliverable #4, I will be using the sample code from Visual Studio Code Lab 
 4. Delete a book record from BetterWorld Books Inventory
 5. Calculate average price of all books in BetterWorld Books Inventory
 
-## Languaged used for the database application:
+## Languages & platforms used for the database application:
 1. Python
 2. mysql.connector
+3. Terminal
 
 ## How to run database application:
 1. Ensure MySQL is running using your host user & password. Enter "BetterWorldBooksDB" to connect to the database.
