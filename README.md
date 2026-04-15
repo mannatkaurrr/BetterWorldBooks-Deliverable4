@@ -7,7 +7,7 @@ Illinois Institute of Technology
 ## Description
 BetterWorld Books is an online bookstore that sells new and used books. Customers can browse the website to find their desired books by title, author, genre/categories. They can also look at more detailed information about those books and eventually place an order. To place an order, customers can add payment details and check out. Lastly, the website allows customers to leave reviews for their orders. 
 
-For deliverable #4, We will be using the sample code from Visual Studio Code Lab provided by Professor Balekaki for CS727. I will be creating a Python-based command-line application and performing CRUD (Create, Read, Update, Delete) operations on the “Book” table in the BetterWorld Books database.
+For deliverable #4, I will be using the sample code from Visual Studio Code Lab provided by Professor Balekaki for CS727. I will be creating a Python-based command-line application and performing CRUD (Create, Read, Update, Delete) operations on the “Book” table in the BetterWorld Books database.
 
 
 ## Menu of operations available to perform on the database application:
