@@ -18,8 +18,8 @@ For deliverable #4, I will be using the sample code from Visual Studio Code Lab 
 5. Calculate average price of all books in BetterWorld Books Inventory
 
 ## Languaged used for the database application:
-- Python
-- mysql.connector
+1. Python
+2. mysql.connector
 
 ## How to run database application:
 1. Ensure MySQL is running using your host user & password.
