@@ -23,17 +23,20 @@ For deliverable #4, I will be using the sample code from Visual Studio Code Lab 
 
 ## How to run database application:
 1. Ensure MySQL is running using your host user & password. Enter "BetterWorldBooksDB" to connect to the database.
+   
 ```python
 connection = mysql.connector.connect(
     host="localhost",
     user="root",
     password="your_password",
-    database="BetterWorldBooksDB"
-)
-    
+    database="BetterWorldBooksDB")
+```
+
 2. Open the Python file using:
-   ```python
+
+```python
 python3 crud_app.py
+```
 
 3. Run the script by pressing enter.
 4. Use the menu options to perform CRUD operations (1,2,3,4,5,6)
