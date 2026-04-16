@@ -1,13 +1,12 @@
 # BetterWorld Books Inc. Database Application
 
 Mannat Kaur
-CS 727 - Course Project - Deliverable #4
-Illinois Institute of Technology
+
 
 ## Description
 BetterWorld Books is an online bookstore that sells new and used books. Customers can browse the website to find their desired books by title, author, genre/categories. They can also look at more detailed information about those books and eventually place an order. To place an order, customers can add payment details and check out. Lastly, the website allows customers to leave reviews for their orders. 
 
-For deliverable #4, I will be using the sample code from Visual Studio Code Lab provided by Professor Balekaki for CS727. I will be creating a Python-based command-line application and performing CRUD (Create, Read, Update, Delete) operations on the “Book” table in the BetterWorld Books database.
+For deliverable #4, I will be creating a Python-based command-line application and performing CRUD (Create, Read, Update, Delete) operations on the “Book” table in the BetterWorld Books database. This will allow any user to manage the book inventory with operations such as view, insert, update and delete.
 
 
 ## Menu of operations available to perform on the database application:
@@ -22,32 +21,31 @@ For deliverable #4, I will be using the sample code from Visual Studio Code Lab 
 2. mysql.connector
 3. Terminal
 
-## How to run database application:
-1. Ensure MySQL is running using your host user & password by running the code below. Enter "BetterWorldBooksDB" to connect to the database.
-   
+## Requirements:
+Before running this application, please ensure you have Python 3 installled on your terminal. You must also be connected to MYSQL Server and it should be installed & running. You must also install the following Python package:
 ```python
-#Connect to the MySQL server
-import mysql.connector
-
-try:
-    connection = mysql.connector.connect(
-        host="localhost",
-        user="youruser",
-        password="yourpassword",
-        database="BetterWorldBooksDB")
-
-    if connection.is_connected():
-        print("Connected to the MySQL database successfully")
+pip install mysql-connector-python
 ```
 
-2. Once connected to MySQL database, open the Python file by running the following code:
+## How to run database application:
+1. Open crud_app.py
+2. Locate the following section below & update it with your own MYSQL credentials. Note: "youruser" must be your MYSQL credential & "yourpassword" must be your MYSQL password. Hit save.
+   
+```python
+connection = mysql.connector.connect(
+  host="localhost",
+  user="youruser",
+  password="yourpassword",
+  database="BetterWorldBooksDB")
+```
+3. Once connected to MySQL database, open Terminal and run the Python file using this:
 
 ```python
 python3 crud_app.py
 ```
-
-3. Run the script by pressing enter.
 4. Use the menu options to perform CRUD operations (1,2,3,4,5,6)
+5. Press 6 from the Menu to exit & close the MYSQL connection.
 
 ## Specifics of database application:
 This database applicaiton includes error handling using try/except/finally and is a command-line application, easier for all users. 
+Currently the sample values for insert, update and delete are hardcoded for this demonstrating this deliverable 4.
