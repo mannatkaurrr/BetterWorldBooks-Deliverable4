@@ -13,8 +13,8 @@ import mysql.connector
 try:
     connection = mysql.connector.connect(
         host="localhost",
-        user="root",
-        password="root1998",
+        user="",
+        password="",
         database="BetterWorldBooksDB")
 
     if connection.is_connected():
