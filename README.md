@@ -23,7 +23,7 @@ For deliverable #4, I will be using the sample code from Visual Studio Code Lab 
 3. Terminal
 
 ## How to run database application:
-1. Open Terminal, ensure MySQL is running using your host user & password by running the code below. Enter "BetterWorldBooksDB" to connect to the database.
+1. Ensure MySQL is running using your host user & password by running the code below. Enter "BetterWorldBooksDB" to connect to the database.
    
 ```python
 #Connect to the MySQL server
