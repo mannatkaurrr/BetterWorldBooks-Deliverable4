@@ -20,10 +20,6 @@ try:
         cursor.execute(select_query)
         books = cursor.fetchall()
 
-        if not books:
-            print("No books found in BetterWorld Books Inventory.")
-            return
-
         print("Inventory of Books at BetterWorld Books")
 
         for book in books:
