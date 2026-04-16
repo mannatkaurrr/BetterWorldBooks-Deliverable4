@@ -22,10 +22,7 @@ For deliverable #4, I will be creating a Python-based command-line application a
 3. Terminal
 
 ## Requirements:
-Before running this application, please ensure you have Python 3 installled on your terminal. You must also be connected to MYSQL Server and it should be installed & running. You must also install the following Python package:
-```python
-pip install mysql-connector-python
-```
+Before running this application, please ensure you have Python 3 installled on your terminal. You must also be connected to MYSQL Server and it should be installed & running.
 
 ## How to run database application:
 1. Open crud_app.py
