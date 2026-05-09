@@ -6,39 +6,54 @@ Mannat Kaur
 ## Description
 BetterWorld Books is an online bookstore that sells new and used books. Customers can browse the website to find their desired books by title, author, genre/categories. They can also look at more detailed information about those books and eventually place an order. To place an order, customers can add payment details and check out. Lastly, the website allows customers to leave reviews for their orders. 
 
-For deliverable #4, I will be creating a Python-based command-line application and performing CRUD (Create, Read, Update, Delete) operations on the “Book” table in the BetterWorld Books database. This will allow any user to manage the book inventory with operations such as view, insert, update and delete.
+For deliverable #5, I will be extending deliverable #4 into a fully interactive Python-based command-line application and performing CRUD (Create, Read, Update, Delete) operations on all tables in the BetterWorld Books database. This database application is a user-friendly command-line interface that supports advanced SQL functionalities & queries, dynamic user interaction and improved error handling.
+
+## Features of the BetterWorld Books database application:
+
+Users can Full CRUD (Create, Read, Update, Delete) operations on the following tables:
+- Author
+- Book
+- Customer
+- Genre
+- Payment
+- Review
+- TransactionItem
+- TransactionSale
+
+Advanced SQL Queries
+There are 7 complex queries 
 
 
-## Menu of operations available to perform on the database application:
-1. Read all books in BetterWorld Books Inventory
-2. Add a book in the BetterWorld Books Inventory
-3. Update a book record in BetterWorld Books Inventory
-4. Delete a book record from BetterWorld Books Inventory
-5. Calculate average price of all books in BetterWorld Books Inventory
+## Languages, libraries and platforms used for the BetterWorld Books database application:
 
-## Languages & platforms used for the database application:
+### Programming Languages:
 1. Python
-2. mysql.connector
-3. Terminal
+2. SQL
+### Python Libraries:
+1. mysql.connector
+2. datetime
+3. decimal
+4. getpass
+### Platforms:
+1. MySQL Server
+2. Terminal / Command-Line Interface
 
 ## Requirements:
 Before running this application, please ensure you have Python 3 installled on your terminal. You must also be connected to MYSQL Server and it should be installed & running.
 
 ## How to run database application:
-1. Open crud_app.py
-2. Locate the following section below & update it with your own MYSQL credentials. Note: "youruser" must be your MYSQL credential & "yourpassword" must be your MYSQL password. Hit save.
-   
-```python
-connection = mysql.connector.connect(
-  host="localhost",
-  user="youruser",
-  password="yourpassword",
-  database="BetterWorldBooksDB")
-```
-3. Once connected to MySQL database, open Terminal and run the Python file using this:
+1. You must ensure that MySQL Server is running and connected properly before executing the application.
+
+To install mysql.connector, run:
 
 ```python
-python3 crud_app.py
+pip install mysql-connector-python
+```
+2. Download the python file listed in this GitHub named "BetterWorldBooksApp.py". Save on desktop.
+2. Once connected to MySQL, open Terminal and run the Python file using this:
+
+```python
+python3 .py
 ```
 4. Use the menu options to perform CRUD operations (1,2,3,4,5,6)
 5. Press 6 from the Menu to exit & close the MYSQL connection.
