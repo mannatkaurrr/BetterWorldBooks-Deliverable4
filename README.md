@@ -22,63 +22,59 @@ Users can execute Full CRUD (Create, Read, Update, Delete) operations on the fol
 ## Advanced SQL Queries
 There are 7 complex queries that users can choose from to execute. Thes queries help conduct a deeper analysis on the data in the database and provide meaningful business insights/analysis. Here is information on what each query does & why it is important:
 
-Query 1 - View Multi-Book Transactions
-
-Statement: Shows which transaction has multiple books purchased.
-          
-Why this is Helpful: The database can show many transaction items in 1 single transaction sale. This query is useful for                administration that would like to see all books that belong to 1 single transaction. 
-          
-Functions Used: Set membership IN, GROUP BY, HAVING, COUNT
-          
+# Query 1 - View Multi-Book Transactions
+Statement: Shows which transaction has multiple books purchased.        
+Why this is Helpful: The database can show many transaction items in 1 single transaction sale. This query is useful for                administration that would like to see all books that belong to 1 single transaction.        
+Functions Used: Set membership IN, GROUP BY, HAVING, COUNT      
 Description of SQL Statement: To do so, we will combine 3 tables: TransactionSale, TransactionItem and Book. We will retrieve           all transaction_sale_id under the Transaction Item table and group them by their ids. This will help group items that belong            to the same transaction sale. Next, using: HAVING COUNT(book_id) > 1This will help in filtering transactions_sale_id that               have more than 1 book purchased. Lastly, sort the rows by transaction_sale_id.
         
-Query 2 - View Sales by Genre
-          Statement: Show which genre of books sell the most at BetterWorld Books
-          Why this is Helpful: This would be extremely helpful for admin to understand which genre is generating the most revenue. 
-          Functions Used: aggregate functions using SUM(), GROUP BY
-          Description of SQL Statement: For this query, we will join tables: Book, Genre, TransactionItem, TransactionSale. We would              retrieve all genres in the catalog. Using the cost of price for each book_id and multiplying it with the quantity sold under            quantity for those corresponding sold books under transaction items to create a new column called total_sales. This will                reflect total amount sold using this line: ROUND(SUM(b.price * ti.quantity), 2) AS total_sales. Then we will sort by genre              and order the genre by the highest to lowest sales using ORDER BY total_sales DESC;
+# Query 2 - View Sales by Genre
+Statement: Show which genre of books sell the most at BetterWorld Books
+Why this is Helpful: This would be extremely helpful for admin to understand which genre is generating the most revenue. 
+Functions Used: aggregate functions using SUM(), GROUP BY
+Description of SQL Statement: For this query, we will join tables: Book, Genre, TransactionItem, TransactionSale. We would              retrieve all genres in the catalog. Using the cost of price for each book_id and multiplying it with the quantity sold under            quantity for those corresponding sold books under transaction items to create a new column called total_sales. This will                reflect total amount sold using this line: ROUND(SUM(b.price * ti.quantity), 2) AS total_sales. Then we will sort by genre              and order the genre by the highest to lowest sales using ORDER BY total_sales DESC;
           
-Query 3 - Rank Books by Customer Rating
-          Rank all books from highest to lowest rating
-          Why this is Helpful: Admin would like to see the lowest & high rated books quickly, this can help make short-term decisions             with sales within administration to run more marketing or adjust pricing for those specific books. Specifically for this one,           it is helpful to see the ranking system for books rather than a sorted result, which is easier for comparing products. RANK()           can help with this because it is easier to scroll for the lowest and highest ranking instead of sorting through the lowest              and highest rating.
-          Functions Used: OLAP/window function using RANK() OVER, subquery, AVG(), GROUP BY
-          Description of SQL Statement: For this query, we will join tables: Book, Author, Genre and Review. We will calculate the                average rating for each book using: AVG(r.rating) AS average_rating. This will be helpful since each book has multiple                  ratings, so we want to see the overall rating. Then we will use OLAP/window function RANK() To assign a ranking for each book           based on their average rating that we calculated from above.
+# Query 3 - Rank Books by Customer Rating
+Rank all books from highest to lowest rating
+Why this is Helpful: Admin would like to see the lowest & high rated books quickly, this can help make short-term decisions             with sales within administration to run more marketing or adjust pricing for those specific books. Specifically for this one,           it is helpful to see the ranking system for books rather than a sorted result, which is easier for comparing products. RANK()           can help with this because it is easier to scroll for the lowest and highest ranking instead of sorting through the lowest              and highest rating.
+Functions Used: OLAP/window function using RANK() OVER, subquery, AVG(), GROUP BY
+Description of SQL Statement: For this query, we will join tables: Book, Author, Genre and Review. We will calculate the                average rating for each book using: AVG(r.rating) AS average_rating. This will be helpful since each book has multiple                  ratings, so we want to see the overall rating. Then we will use OLAP/window function RANK() To assign a ranking for each book           based on their average rating that we calculated from above.
           
-Query 4 - View Revenue Rollup by Genre and Payment Method
-          Show transaction sales total amounts by genre & grand totals of all totals for each genre.
-          Why this is Helpful: This is helpful because we can see how much each genre makes in revenue. Admin/ Upper management can               take a look at this and understand out of all genres, which is the top performing genre and how are customers paying for it.
-          Functions Used: OLAP query using WITH ROLLUP, SUM(), GROUP BY
-          Description of SQL Statement: For this query, we will join 5 tables: Book, Genre, TransactionItem, Transactionsale and                  Payment. Firstly, we select the name of all genres, payment methods and calculate the total sales using: SUM(b.price *                  ti.quantity) AS total_salesNext, we will group them by genre and payment method, adding WITH ROLLUP;. This will summarize               each genre & give an extra line for the grand total for all total sales from all payment methods used. 
+# Query 4 - View Revenue Rollup by Genre and Payment Method
+Show transaction sales total amounts by genre & grand totals of all totals for each genre.
+Why this is Helpful: This is helpful because we can see how much each genre makes in revenue. Admin/ Upper management can               take a look at this and understand out of all genres, which is the top performing genre and how are customers paying for it.
+Functions Used: OLAP query using WITH ROLLUP, SUM(), GROUP BY
+Description of SQL Statement: For this query, we will join 5 tables: Book, Genre, TransactionItem, Transactionsale and                  Payment. Firstly, we select the name of all genres, payment methods and calculate the total sales using: SUM(b.price *                  ti.quantity) AS total_salesNext, we will group them by genre and payment method, adding WITH ROLLUP;. This will summarize               each genre & give an extra line for the grand total for all total sales from all payment methods used. 
           
-Query 5 - Smart Value Book Recommendations
-          Shows affordable, used-books compared against a chosen benchmark genre 
-          Why this is Helpful: This query is useful in narrowing down book options that fall within the customer’s budget but still be            able to have high reviews before making a transaction sale. This is a dynamic query where the user can enter in a benchmark             genre from the list of genres & it will compare affordable books against it to identify better-value recommendations.
-          Functions Used: Set comparison using ALL and subqueries
-          Description of SQL Statement: For this specific query, we combine information from 4 tables in the database: Book, Author,              Genre and Review. We will calculate the average rating for each book using: AVG(r.rating) AS average_rating. This will be               helpful since each book has multiple ratings, so we want to see the overall rating. We will also filter to only show books              priced from $10 to $15 using: WHERE price BETWEEN 10 AND 15 and book condition “Used-Good” using this: AND book_condition               LIKE 'Used - Good’ Next, this query uses a set comparison with ALL compare book prices against a user-selected benchmark                genre that will return books that are lower priced than all the books in the chosen benchmark genre.
+# Query 5 - Smart Value Book Recommendations
+Shows affordable, used-books compared against a chosen benchmark genre 
+Why this is Helpful: This query is useful in narrowing down book options that fall within the customer’s budget but still be            able to have high reviews before making a transaction sale. This is a dynamic query where the user can enter in a benchmark             genre from the list of genres & it will compare affordable books against it to identify better-value recommendations.
+Functions Used: Set comparison using ALL and subqueries
+Description of SQL Statement: For this specific query, we combine information from 4 tables in the database: Book, Author,              Genre and Review. We will calculate the average rating for each book using: AVG(r.rating) AS average_rating. This will be               helpful since each book has multiple ratings, so we want to see the overall rating. We will also filter to only show books              priced from $10 to $15 using: WHERE price BETWEEN 10 AND 15 and book condition “Used-Good” using this: AND book_condition               LIKE 'Used - Good’ Next, this query uses a set comparison with ALL compare book prices against a user-selected benchmark                genre that will return books that are lower priced than all the books in the chosen benchmark genre.
 
-Query 6 - View Most Used Payment Methods
-          Shows which payment methods have been used the most in transactions by customers.
-          Why this is Helpful: Instead of displaying the full transaction history of the chosen customer. We will display payment                 methods of all customers & which ones are used most frequently.  This is helpful for the admin to see transaction patterns to           decipher any financial decisions to be taken related to payment. 
-          Functions Used: Set operation using UNION, COUNT(), GROUP BY
-          Description of SQL Statement: This query only used the Payment table to retrieve information on payment methods according to            the id. We use COUNT() to add up how many times different payment methods are used & SUM() to add up how much was spent for             each payment method. Next, we group by Payment method and order the list by highest to lowest spent on those methods using              DESC;
+# Query 6 - View Most Used Payment Methods
+Shows which payment methods have been used the most in transactions by customers.
+Why this is Helpful: Instead of displaying the full transaction history of the chosen customer. We will display payment                 methods of all customers & which ones are used most frequently.  This is helpful for the admin to see transaction patterns to           decipher any financial decisions to be taken related to payment. 
+Functions Used: Set operation using UNION, COUNT(), GROUP BY
+Description of SQL Statement: This query only used the Payment table to retrieve information on payment methods according to            the id. We use COUNT() to add up how many times different payment methods are used & SUM() to add up how much was spent for             each payment method. Next, we group by Payment method and order the list by highest to lowest spent on those methods using              DESC;
 
-Query 7 - View Customer Loyalty Ranking
-          Show total spending for each customer & compare it in a list for loyalty program analysis
-          Why this is Helpful: This is helpful for administration to understand customer loyalty especially if they are implementing a            customer reward program & need business analysis to support that. It is useful because it will show that using DENSE_RANK()             can be an effective ranking comparison method. 
-          Functions Used: Subquery using WITH clause, OLAP/window function using DENSE_RANK()
-          Description of SQL Statement: This query joins 2 tables together: Customer and TransactionSale. First we select what we want            to see in our table which is customer_id, name of customer, total_spent. Then we use DENSE_RANK() OVER (ORDER BY total_spent            DESC) AS customer_rank to rank the customers based on total_spent and add in a column called customer_rank. The highest rank            is given to the customer who spent the most at BetterWorld Books. If 2 customers spent the same amount, they are given the              same rank. Next, we also select the total transaction sale amount & sum up the total based on customer id & create a new                column called total_spent using: SUM(ts.total_transaction_sale_amount) AS total_spent Then we group by customer_id and order            the list from highest rank to lowest rank. 
+# Query 7 - View Customer Loyalty Ranking
+Show total spending for each customer & compare it in a list for loyalty program analysis
+Why this is Helpful: This is helpful for administration to understand customer loyalty especially if they are implementing a            customer reward program & need business analysis to support that. It is useful because it will show that using DENSE_RANK()             can be an effective ranking comparison method. 
+Functions Used: Subquery using WITH clause, OLAP/window function using DENSE_RANK()
+Description of SQL Statement: This query joins 2 tables together: Customer and TransactionSale. First we select what we want            to see in our table which is customer_id, name of customer, total_spent. Then we use DENSE_RANK() OVER (ORDER BY total_spent            DESC) AS customer_rank to rank the customers based on total_spent and add in a column called customer_rank. The highest rank            is given to the customer who spent the most at BetterWorld Books. If 2 customers spent the same amount, they are given the              same rank. Next, we also select the total transaction sale amount & sum up the total based on customer id & create a new                column called total_spent using: SUM(ts.total_transaction_sale_amount) AS total_spent Then we group by customer_id and order            the list from highest rank to lowest rank. 
           
 ## Languages, libraries and platforms used for the BetterWorld Books database application:
 
-### Programming Languages:
+# Programming Languages:
 - Python
 - SQL
-### Python Libraries:
+# Python Libraries:
 - mysql.connector
 - datetime
 - decimal
 - getpass
-### Platforms:
+# Platforms:
 - MySQL Server
 - Terminal / Command-Line Interface
 
@@ -110,5 +106,10 @@ python3 betterworldbooksapp.py
 8) When you are ready to log off, select "Exit" from the Main Menu to safely close the database connection and terminate the application.
 
 ## Specifics of database application:
+
+# Error-Handling
+This database application contains many error-handling and validation features for better usability:
+
+
 This database applicaiton includes error handling using try/except/finally and is a command-line application, easier for all users. 
 Currently the sample values for insert, update and delete are hardcoded for this demonstrating this deliverable 4.
