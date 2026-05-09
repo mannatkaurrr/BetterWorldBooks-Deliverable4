@@ -4,9 +4,9 @@ Mannat Kaur
 ## Description
 BetterWorld Books is an online bookstore that sells new and used books. Customers can browse the website to find their desired books by title, author, genre/categories. They can also look at more detailed information about those books and eventually place an order. To place an order, customers can add payment details and check out. Lastly, the website allows customers to leave reviews for their orders. 
 
-For deliverable #5, I will be extending deliverable #4 into a fully interactive Python-based command-line application and performing CRUD (Create, Read, Update, Delete) operations on all tables in the BetterWorld Books database. This database application is a user-friendly command-line interface that supports advanced SQL functionalities & queries, dynamic user interaction and improved error handling.
+For deliverable #5, I will be extending deliverable #4 into a fully interactive Python-based command-line application and performing CRUD (Create, Read, Update, Delete) operations on all tables in the BetterWorld Books database. This database application is a user-friendly command-line interface that supports advanced SQL functionalities & queries, dynamic user interaction, and improved error handling.
 
-## Features of the BetterWorld Books database application:
+## Features:
 
 Users can execute Full CRUD (Create, Read, Update, Delete) operations on the following tables in the BetterWorld Books database application:
 
@@ -19,12 +19,15 @@ Users can execute Full CRUD (Create, Read, Update, Delete) operations on the fol
 - TransactionItem
 - TransactionSale
 
-## Dynamic Interactive Features of the BetterWorld Books database application
-- Dynamic and user-friendly menu navigation using 
-- User can dynamically choose CRUD operations 
+## Dynamic Interactive Features 
+- User-friendly menu navigation with a command-line interface
+- Users can dynamically choose CRUD operations & which tables they want to interact with. To operate, users are given step by step prompts.
+- Users can dynamically enter values instead of hard-coded values.
+- Users can enter & exit the program at any given time; can also return back to previous menus dynamically.
+- Dynamic input validation with error handling (for more information - scroll to bottom of this README to "Error-Handling & Security")
 
 ## Advanced SQL Queries
-There are 7 complex queries that users can choose from to execute. Thes queries help conduct a deeper analysis on the data in the database and provide meaningful business insights/analysis. Here is information on what each query does & why it is important:
+There are 7 complex queries that users can choose from to execute. These queries help conduct a deeper analysis on the data in the database and provide meaningful business insights/analysis. Here is information on what each query does & why it is important:
 
 ### Query 1 - View Multi-Book Transactions
 Statement: Shows which transaction has multiple books purchased.
@@ -65,7 +68,7 @@ Description of SQL Statement: For this query, we will join 5 tables: Book, Genre
 ### Query 5 - Smart Value Book Recommendations
 Statement: Shows affordable, used-books compared against a chosen benchmark genre 
 
-Why this is Helpful: This query is useful in narrowing down book options that fall within the customer’s budget but still be            able to have high reviews before making a transaction sale. This is a dynamic query where the user can enter in a benchmark             genre of their choice from the list of genres & it will compare affordable books against it to identify a better-value recommendations.
+Why this is Helpful: This query is useful in narrowing down book options that fall within the customer’s budget but still be            able to have high reviews before making a transaction sale. This is a dynamic query where the user can enter in a benchmark             genre of their choice from the list of genres & it will compare affordable books against it to identify a better value recommendations.
 
 Functions Used: Set comparison using ALL and subqueries
 
@@ -78,7 +81,7 @@ Why this is Helpful: Instead of displaying the full transaction history of the c
 
 Functions Used: Set operation using UNION, COUNT(), GROUP BY
 
-Description of SQL Statement: This query only used the Payment table to retrieve information on payment methods according to            the id. We use COUNT() to add up how many times different payment methods are used & SUM() to add up how much was spent for             each payment method. Next, we group by Payment method and order the list by highest to lowest spent on those methods using              DESC;
+Description of SQL Statement: This query only used the Payment table to retrieve information on payment methods according to            the payment id. We use COUNT() to add up how many times different payment methods are used & SUM() to add up how much was spent for             each payment method. Next, we group by Payment method and order the list by highest to lowest spent on those methods using              DESC;
 
 ### Query 7 - View Customer Loyalty Ranking
 Statement: Show total spending for each customer & compare it in a list for loyalty program analysis.
