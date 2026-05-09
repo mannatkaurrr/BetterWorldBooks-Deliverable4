@@ -1,7 +1,5 @@
 # BetterWorld Books Inc. Database Application
-
 Mannat Kaur
-
 
 ## Description
 BetterWorld Books is an online bookstore that sells new and used books. Customers can browse the website to find their desired books by title, author, genre/categories. They can also look at more detailed information about those books and eventually place an order. To place an order, customers can add payment details and check out. Lastly, the website allows customers to leave reviews for their orders. 
@@ -50,7 +48,9 @@ Query 4 - View Revenue Rollup by Genre and Payment Method
           
 Query 5 - Smart Value Book Recommendations
           Shows affordable, used-books compared against a chosen benchmark genre 
+          Why this is Helpful: This query is useful in narrowing down book options that fall within the customer’s budget but still be            able to have high reviews before making a transaction sale. This is a dynamic query where the user can enter in a benchmark             genre from the list of genres & it will compare affordable books against it to identify better-value recommendations.
           Functions Used: Set comparison using ALL and subqueries
+          Description of SQL Statement: For this specific query, we combine information from 4 tables in the database: Book, Author,              Genre and Review. We will calculate the average rating for each book using: AVG(r.rating) AS average_rating. This will be               helpful since each book has multiple ratings, so we want to see the overall rating. We will also filter to only show books              priced from $10 to $15 using: WHERE price BETWEEN 10 AND 15 and book condition “Used-Good” using this: AND book_condition               LIKE 'Used - Good’ Next, this query uses a set comparison with ALL compare book prices against a user-selected benchmark                genre that will return books that are lower priced than all the books in the chosen benchmark genre.
 
 Query 6 - View Most Used Payment Methods
           Shows which payment methods have been used the most in transactions by customers.
@@ -58,7 +58,6 @@ Query 6 - View Most Used Payment Methods
           Functions Used: Set operation using UNION, COUNT(), GROUP BY
           Description of SQL Statement: This query only used the Payment table to retrieve information on payment methods according to            the id. We use COUNT() to add up how many times different payment methods are used & SUM() to add up how much was spent for             each payment method. Next, we group by Payment method and order the list by highest to lowest spent on those methods using              DESC;
 
-        
 Query 7 - View Customer Loyalty Ranking
           Show total spending for each customer & compare it in a list for loyalty program analysis
           Why this is Helpful: This is helpful for administration to understand customer loyalty especially if they are implementing a            customer reward program & need business analysis to support that. It is useful because it will show that using DENSE_RANK()             can be an effective ranking comparison method. 
