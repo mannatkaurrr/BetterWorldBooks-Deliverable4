@@ -114,7 +114,7 @@ You must ensure the following are installed and properly running before executin
 To install mysql.connector & tabulate use:
 
 ```python
-pip install mysql-connector-python
+pip3 install mysql-connector-python
 pip3 install tabulate
 ```
 
