@@ -89,7 +89,7 @@ Functions Used: Subquery using WITH clause, OLAP/window function using DENSE_RAN
 
 Description of SQL Statement: This query joins 2 tables together: Customer and TransactionSale. First, the WITH clause creates a temporary result called ranked_customers. We select what we want to see in ranked_customer which is customer_id, name of customer, total_spent. Then we use DENSE_RANK() OVER (ORDER BY total_spent DESC) AS customer_rank to rank the customers based on total_spent. The highest rank is given to the customer who spent the most at BetterWorld Books. If 2 customers spent the same amount, they are given the same rank. Next, we also select the total transaction sale amount & sum up the total based on customer id & create a new column called total_spent using: SUM(ts.total_transaction_sale_amount) AS total_spent. Then we group by customer_id and order the list from highest rank to lowest rank. This allows BetterWorld Books administration to compare customer spending patterns more effectively for loyalty and rewards analysis.
           
-## Languages, libraries and platforms used for the BetterWorld Books database application:
+## Languages, libraries and platforms used:
 
 ### Languages and Libraries:
 - Python
@@ -135,7 +135,7 @@ python3 betterworldbooksapp.py
 
 ## Specifics of database application:
 
-# Error-Handling & Security
+### Error-Handling & Security
 This database application contains many error-handling, validation features for better usability. It also contains database security functionalities to help secure and private connections:
 
 - Date, email, phone number input validation
