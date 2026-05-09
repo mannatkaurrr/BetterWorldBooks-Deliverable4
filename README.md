@@ -23,13 +23,14 @@ Users can execute Full CRUD (Create, Read, Update, Delete) operations on the fol
 There are 7 complex queries that users can choose from to execute. Thes queries help conduct a deeper analysis on the data in the database and provide meaningful business insights/analysis. Here is information on what each query does & why it is important:
 
 Query 1 - View Multi-Book Transactions
-          Statement: Shows which transaction has multiple books purchased.
+
+Statement: Shows which transaction has multiple books purchased.
           
-          Why this is Helpful: The database can show many transaction items in 1 single transaction sale. This query is useful for                administration that would like to see all books that belong to 1 single transaction. 
+Why this is Helpful: The database can show many transaction items in 1 single transaction sale. This query is useful for                administration that would like to see all books that belong to 1 single transaction. 
           
-          Functions Used: Set membership IN, GROUP BY, HAVING, COUNT
+Functions Used: Set membership IN, GROUP BY, HAVING, COUNT
           
-          Description of SQL Statement: To do so, we will combine 3 tables: TransactionSale, TransactionItem and Book. We will retrieve           all transaction_sale_id under the Transaction Item table and group them by their ids. This will help group items that belong            to the same transaction sale. Next, using: HAVING COUNT(book_id) > 1This will help in filtering transactions_sale_id that               have more than 1 book purchased. Lastly, sort the rows by transaction_sale_id.
+Description of SQL Statement: To do so, we will combine 3 tables: TransactionSale, TransactionItem and Book. We will retrieve           all transaction_sale_id under the Transaction Item table and group them by their ids. This will help group items that belong            to the same transaction sale. Next, using: HAVING COUNT(book_id) > 1This will help in filtering transactions_sale_id that               have more than 1 book purchased. Lastly, sort the rows by transaction_sale_id.
         
 Query 2 - View Sales by Genre
           Statement: Show which genre of books sell the most at BetterWorld Books
