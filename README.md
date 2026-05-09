@@ -128,9 +128,13 @@ python3 betterworldbooksapp.py
 
 ## Specifics of database application:
 
-# Error-Handling
-This database application contains many error-handling and validation features for better usability:
+# Error-Handling & Security
+This database application contains many error-handling, validation features for better usability. It also contains database security functionalities to help secure and private connections:
 
-
-This database applicaiton includes error handling using try/except/finally and is a command-line application, easier for all users. 
-Currently the sample values for insert, update and delete are hardcoded for this demonstrating this deliverable 4.
+- Date, email, phone number input validation
+- Decimal + integer number & blank input validation
+- Foreign key constraints
+- User-friendly cancellation using "exit" inputs
+- Exception handling using try, except and finally.
+- Entering password using getpass() & making sure it is hidden
+- Username and password invalidation using error-handling messages
