@@ -19,6 +19,10 @@ Users can execute Full CRUD (Create, Read, Update, Delete) operations on the fol
 - TransactionItem
 - TransactionSale
 
+## Dynamic Interactive Features of the BetterWorld Books database application
+- Dynamic and user-friendly menu navigation using 
+- User can dynamically choose CRUD operations 
+
 ## Advanced SQL Queries
 There are 7 complex queries that users can choose from to execute. Thes queries help conduct a deeper analysis on the data in the database and provide meaningful business insights/analysis. Here is information on what each query does & why it is important:
 
@@ -94,6 +98,7 @@ Description of SQL Statement: This query joins 2 tables together: Customer and T
 - datetime (installed from Python library)
 - decimal (installed from Python library)
 - getpass (installed from Python library)
+- tabulate 
   
 ### Platforms:
 - MySQL Server
@@ -104,11 +109,13 @@ You must ensure the following are installed and properly running before executin
 - Python3
 - MySQL Server
 - mysql.connector (From Python library)
+- tabulate
 
-To install mysql.connector use:
+To install mysql.connector & tabulate use:
 
 ```python
 pip install mysql-connector-python
+pip3 install tabulate
 ```
 
 ## How to Download and Run the Database Application
